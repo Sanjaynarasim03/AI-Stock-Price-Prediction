@@ -91,4 +91,4 @@ stock_price_predictor/
 
 ---
 
-*Created by \[Your Name], July 2025*
+*Created by Sanjay, July 2025*
