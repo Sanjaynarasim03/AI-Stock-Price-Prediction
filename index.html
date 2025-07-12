@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Price Predictor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type=text] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        input[type=submit] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result, .error {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .result { background-color: #dff0d8; color: #3c763d; }
+        .error { background-color: #f2dede; color: #a94442; }
+        img { max-width: 100%; height: auto; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Stock Price Predictor</h1>
+    <form method="POST">
+        <label for="symbol">Enter Stock Symbol (e.g. AAPL):</label><br><br>
+        <input type="text" id="symbol" name="symbol" required>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if prediction %}
+    <div class="result">
+        <strong>Predicted Closing Price:</strong> ${{ prediction | round(2) }}
+    </div>
+    {% endif %}
+
+    {% if plot_url %}
+    <img src="{{ plot_url }}" alt="Stock Price Plot">
+    {% endif %}
+</body>
+</html>
